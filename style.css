@@ -1,0 +1,368 @@
+/* Netflix-inspired styles */
+:root {
+  /* Define variáveis CSS para cores e sombras (default dark mode) */
+  --bg: #141414;
+  --text: #e5e5e5;
+  --subtext: #b3b3b3;
+  --accent: #e50914;
+  --card: #222;
+  --card-text: #f2f2f2;
+  --shadow: 0 10px 30px rgba(255, 252, 252, 0.034);
+  --border: rgba(255, 255, 255, 0.12);
+}
+
+body.light-mode {
+  --bg: #f4f4f4;
+  --text: #111;
+  --subtext: #555;
+  --accent: #e50914;
+  --card: #ffffff;
+  --card-text: #0f0f0f;
+  --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  --border: rgba(0, 0, 0, 0.12);
+}
+
+body.dark-mode {
+  --bg: #141414;
+  --text: #e5e5e5;
+  --subtext: #b3b3b3;
+  --accent: #e50914;
+  --card: #222;
+  --card-text: #f2f2f2;
+  --shadow: 0 10px 30px rgba(255, 252, 252, 0.034);
+  --border: rgba(255, 255, 255, 0.12);
+}
+
+* {
+  /* Aplica box-sizing border-box a todos os elementos para incluir padding e border na largura/altura */
+  box-sizing: border-box;
+  /* Remove margem padrão de todos os elementos */
+  margin: 0;
+  /* Remove padding padrão de todos os elementos */
+  padding: 0;
+}
+
+html,
+body {
+  /* Define altura de 100% para html e body para ocupar toda a tela */
+  height: 100%;
+}
+
+body {
+  /* Define a família de fontes, priorizando Helvetica Neue */
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /* Define a cor de fundo usando variável */
+  background-color: var(--bg);
+  /* Define a cor do texto usando variável */
+  color: var(--text);
+  /* Define o espaçamento entre linhas */
+  line-height: 1.4;
+  /* Usa flexbox para layout vertical */
+  display: flex;
+  /* Direção vertical para empilhar elementos */
+  flex-direction: column;
+  /* Alinha itens ao início (topo) */
+  justify-content: flex-start;
+  /* Centraliza horizontalmente */
+  align-items: center;
+  /* Adiciona padding interno de 2rem */
+  padding: 2rem;
+  /* Transição suave de tema */
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+header,
+footer,
+.profile,
+figcaption,
+main,
+.profiles {
+  transition: background-color 250ms ease, color 250ms ease, box-shadow 250ms ease;
+}
+
+header {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+header h1 {
+  /* Define o tamanho da fonte para 2rem */
+  font-size: 2rem;
+  /* Transforma o texto em maiúsculas */
+  text-transform: uppercase;
+  /* Adiciona espaçamento entre letras */
+  letter-spacing: 1px;
+  /* Define cor do texto usando variável para se adaptar ao tema */
+  color: var(--text);
+  /* Adiciona margem inferior de 1rem */
+  margin-bottom: 0;
+}
+
+#theme-toggle {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background-color 175ms ease, color 175ms ease, border-color 175ms ease;
+}
+
+#theme-toggle:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: transparent;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--text);
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+  background-color: #fff;
+}
+
+.slider:hover {
+  box-shadow: 0 0 8px var(--accent);
+}
+
+
+main {
+  /* Define largura máxima e centraliza o conteúdo para evitar largo espaço em telas grandes */
+  width: clamp(320px, 85vw, 960px);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.profiles {
+  /* Usa CSS Grid para layout */
+  display: grid;
+  /* Cria colunas que se repetem automaticamente, mínimo 150px, máximo 1fr */
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  /* Define espaçamento entre itens de 1rem */
+  gap: 1rem;
+  /* Centraliza os itens no eixo horizontal quando em grid */
+  justify-content: center;
+  justify-items: center;
+  /* Limita a largura total para manter cards centralizados em telas muito largas */
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.profile a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  height: 100%;
+}
+
+.profile:hover,
+.profile:focus-within,
+.profile a:hover,
+.profile a:focus {
+  /* Translada o elemento para cima e aumenta ligeiramente */
+  transform: translateY(-3px) scale(1.02);
+  /* Aumenta a sombra no hover */
+  box-shadow: 0 8px 16px rgb(248, 248, 248);
+}
+
+.profile figure {
+  /* Remove margem padrão da figure */
+  margin: 0;
+  /* Posicionamento relativo para elementos filhos */
+  position: relative;
+}
+
+.profile img {
+  /* Largura de 100% para ocupar todo o container */
+  width: 100%;
+  /* Exibe como bloco para remover espaço inferior */
+  display: block;
+  /* Altura automática para manter proporção */
+  height: auto;
+}
+
+figcaption {
+  /* Padding interno de 0.85rem */
+  padding: 0.85rem;
+  /* Alinha texto ao centro */
+  text-align: center;
+  /* Peso da fonte bold */
+  font-weight: 700;
+  /* Cor do texto usando variável */
+  color: var(--card-text);
+  /* Tamanho da fonte de 1rem */
+  font-size: 1rem;
+  /* Fundo semi-transparente */
+  background: rgba(0, 0, 0, 0.45);
+}
+
+footer {
+  /* Margem superior de 1.5rem */
+  margin-top: 1.5rem;
+  /* Alinha texto ao centro */
+  text-align: center;
+  /* Cor do texto usando variável */
+  color: var(--subtext);
+  /* Tamanho da fonte de 0.88rem */
+  font-size: 0.88rem;
+}
+
+@media (min-width: 901px) {
+  .profiles {
+    /* Perfis em linha no desktop grande */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+
+  .profiles > li {
+    /* remove margem/estrutura de listas externas para layout flex */
+    width: auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .profiles ol {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .profiles ol li.profile {
+    width: auto;
+    flex: 0 0 auto;
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 1200px) {
+  main {
+      /*aumenta a margem superior para dar mais espaço em telas médias */
+    margin-top: 10rem;
+
+    /* Largura fluida em tablets e laptops pequenos */
+    width: min(92%, 960px);
+  }
+
+  .profiles {
+    /* Menos colunas, mais legibilidade em telas médias */
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 0.9rem;
+  }
+
+  .profile {
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    /* Layout mais estreito e espaçamento reduzido */
+    padding: 1.5rem;
+  }
+
+  header h1 {
+    font-size: 1.75rem;
+  }
+
+  .profiles {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .profile {
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  }
+}
+
+@media (max-width: 500px) {
+  body {
+    /* Reduz padding para telas pequenas */
+    padding: 1rem;
+  }
+
+  header h1 {
+    /* Reduz tamanho da fonte para telas pequenas */
+    font-size: 1.5rem;
+  }
+
+  .profiles {
+    /* 2 colunas para melhor aproveitamento em celular pequeno */
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    max-width: 100%;
+  }
+
+  .profiles ol,
+  .profiles > li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .profile {
+    border-radius: 8px;
+    padding: 0.15rem;
+  }
+
+  figcaption {
+    font-size: 0.92rem;
+    padding: 0.6rem;
+  }
+}
