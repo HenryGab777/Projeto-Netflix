@@ -1,6 +1,7 @@
 # Netflix Clone
 
-Este projeto é um clone da interface da Netflix, desenvolvido como parte de uma imersão em desenvolvimento web. Ele simula a experiência de navegação em um catálogo de filmes e séries, com seleção de perfis e carrosséis interativos.
+Este é um projeto de estudo, desenvolvido como parte de uma imersão em desenvolvimento web. Ele simula a experiência de navegação em um catálogo de filmes e séries, com seleção de perfis e carrosséis interativos.
+
 
 ## Estrutura do Projeto
 
@@ -22,6 +23,16 @@ Netflix/
 │           ├── Card.js        # Componente para criar cards de filmes/séries
 │           └── Carousel.js    # Componente para criar carrosséis
 ```
+
+## 🛠️ Processo de Desenvolvimento
+O projeto foi iniciado em ambiente **local**, e utileizei para versionamento de codigo o **Git** 
+realizei a integração com o **GitHub** para hospedagem e compartilhamento do código.
+
+**Principais comandos utilizados:**
+- `git init`: Inicialização do repositório local.
+- `git add` e `git commit`: Controle de versão granular das funcionalidades.
+- `git remote add origin`: Conexão com o repositório remoto.
+- `git push`: Sincronização e deploy do código.
 
 ## Como Funciona
 
