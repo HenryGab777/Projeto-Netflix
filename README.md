@@ -25,8 +25,8 @@ Netflix/
 ```
 
 ## 🛠️ Processo de Desenvolvimento
-O projeto foi iniciado em ambiente **local**, e utileizei para versionamento de codigo o **Git** 
-realizei a integração com o **GitHub** para hospedagem e compartilhamento do código.
+O projeto foi iniciado em ambiente **local**, e utilezei o GIT para versionamento de codigo e realizar integração no repositorio **GitHub** 
+para hospedagem e compartilhamento do código.
 
 **Principais comandos utilizados:**
 - `git init`: Inicialização do repositório local.
